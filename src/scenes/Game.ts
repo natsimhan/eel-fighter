@@ -3,7 +3,7 @@ import {Scene} from 'phaser';
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
-    msg_text: Phaser.GameObjects.Text;
+    fishPaddle: Phaser.Physics.Arcade.Image;
 
     constructor() {
         super('Game');
@@ -11,22 +11,25 @@ export class Game extends Scene {
 
     create() {
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
+        this.camera.setBackgroundColor('#00002a');
 
         this.background = this.add.image(512, 384, 'background');
         this.background.setAlpha(0.5);
 
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        });
-        this.msg_text.setOrigin(0.5);
+        this.createFishPaddle();
+    }
 
-        this.input.once('pointerdown', () => {
+    private createFishPaddle() {
+        this.fishPaddle = this.physics.add.image(
+            this.scale.width * .5,
+            this.scale.height * .9,
+            'fishPack',
+            'fishTile_103'
+        );
 
-            this.scene.start('GameOver');
+        this.fishPaddle.setCollideWorldBounds(true);
+        this.fishPaddle.setImmovable(true);
 
-        });
+        this.fishPaddle.setVelocity(0, -100);
     }
 }
