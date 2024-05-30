@@ -24,14 +24,21 @@ export class Game extends Scene {
     }
 
     update() {
+        this.fishPaddle.setVelocityX(0);
+        this.fishPaddle.setVelocityY(0);
+
         if (this.cursors.left.isDown) {
             this.fishPaddle.setVelocityX(-300);
-            this.fishPaddle.setFlipX(true); // à gauche on le retourne
+            this.fishPaddle.setFlipX(true);
         } else if (this.cursors.right.isDown) {
             this.fishPaddle.setVelocityX(300);
-            this.fishPaddle.setFlipX(false); // à droite on le remet à l'endroit
-        } else {
-            this.fishPaddle.setVelocityX(0);
+            this.fishPaddle.setFlipX(false);
+        }
+
+        if (this.cursors.up.isDown) {
+            this.fishPaddle.setVelocityY(-300);
+        } else if (this.cursors.down.isDown) {
+            this.fishPaddle.setVelocityY(300);
         }
     }
 
