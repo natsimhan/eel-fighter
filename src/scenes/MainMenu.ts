@@ -5,6 +5,7 @@ export class MainMenu extends Scene {
     logo: GameObjects.Image;
     title: GameObjects.Text;
     start: GameObjects.Text;
+    fish: Phaser.GameObjects.Image;
 
     constructor() {
         super('MainMenu');
@@ -16,7 +17,7 @@ export class MainMenu extends Scene {
         this.logo = this.add.image(512, 300, 'logo');
 
         this.title = this.add.text(this.scale.width * .5, this.logo.getBounds().bottom, 'Aby-Breakout', {
-            fontFamily: 'Arial Black', fontSize: 42*1.5, color: '#0052ff',
+            fontFamily: 'Arial Black', fontSize: 42 * 1.5, color: '#0052ff',
             stroke: '#ffffff', strokeThickness: 8,
             align: 'center'
         }).setOrigin(0.5).setRotation(-.1);
@@ -30,6 +31,23 @@ export class MainMenu extends Scene {
 
         this.start.on('pointerdown', () => {
             this.scene.start('Game');
+        });
+
+        this.fish = this.add.image(
+            this.start.getBounds().left - 20,
+            this.start.getBounds().centerY,
+            'fishPack',
+            'fishTile_103'
+        );
+        this.fish.setOrigin(1, .5);
+
+        this.tweens.add({
+            targets: this.fish,
+            x: this.fish.x + 10,
+            yoyo: true,
+            repeat: -1,
+            duration: 500,
+            ease: 'Sine.easeInOut'
         });
     }
 }

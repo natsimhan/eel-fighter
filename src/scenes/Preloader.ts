@@ -29,6 +29,8 @@ export class Preloader extends Scene {
         this.load.setPath('assets');
 
         this.load.image('logo', 'logo.png');
+
+        this.load.atlas('fishPack', 'kenney_fish_pack.png', 'kenney_fish_pack.json');
     }
 
     create() {
