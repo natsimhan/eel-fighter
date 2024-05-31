@@ -5,9 +5,12 @@ export class Game extends Scene {
     background: Phaser.GameObjects.Image;
     fishPaddle: Phaser.Physics.Arcade.Image;
     cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+    paddleLimitTop: number;
+    paddleLimitBottom: number;
 
     constructor() {
         super('Game');
+
     }
 
     create() {
@@ -40,6 +43,12 @@ export class Game extends Scene {
         } else if (this.cursors.down.isDown) {
             this.fishPaddle.setVelocityY(300);
         }
+
+        if (this.fishPaddle.y < this.paddleLimitTop) {
+            this.fishPaddle.y = this.paddleLimitTop;
+        } else if (this.fishPaddle.y > this.paddleLimitBottom) {
+            this.fishPaddle.y = this.paddleLimitBottom;
+        }
     }
 
     private createFishPaddle() {
@@ -52,5 +61,8 @@ export class Game extends Scene {
 
         this.fishPaddle.setCollideWorldBounds(true);
         this.fishPaddle.setImmovable(true);
+
+        this.paddleLimitTop = this.scale.height * .75;
+        this.paddleLimitBottom = this.scale.height;
     }
 }
