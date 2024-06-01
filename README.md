@@ -1,6 +1,9 @@
-# Aby Breakout
+# Eel Fighter
 
-"Aby Breakout" is a mini-game to learn how to code a game from A to Z with
+A horizontal scrolling shooter game where you control an electric eel battling
+through waves of enemy fish.
+
+It is a mini-game to learn how to code a game from A to Z with
 Phaser; it is a demonstration whose initial architecture is provided by a Phaser
 template.
 

@@ -12,17 +12,17 @@ export class MainMenu extends Scene {
     }
 
     create() {
-        this.background = this.add.image(512, 384, 'background');
+        this.background = this.add.image(this.scale.width / 2, this.scale.height / 2, 'background');
 
-        this.logo = this.add.image(512, 300, 'logo');
+        this.logo = this.add.image(this.scale.width / 2, this.scale.height / 4, 'logo');
 
-        this.title = this.add.text(this.scale.width * .5, this.logo.getBounds().bottom, 'Aby-Breakout', {
+        this.title = this.add.text(this.scale.width * .5, this.logo.getBounds().bottom, 'Eel Fighter', {
             fontFamily: 'Arial Black', fontSize: 42 * 1.5, color: '#0052ff',
             stroke: '#ffffff', strokeThickness: 8,
             align: 'center'
         }).setOrigin(0.5).setRotation(-.1);
 
-        this.start = this.add.text(512, 460, 'Start', {
+        this.start = this.add.text(this.scale.width / 2, this.scale.height * 2 / 3, 'Start', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
