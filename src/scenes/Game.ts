@@ -2,6 +2,7 @@ import {Scene} from 'phaser';
 import {Enemy} from "../components/Enemy.ts";
 import {Player} from "../components/Player.ts";
 import {Bullet} from "../components/Bullet.ts";
+import {Hud} from "./Hud.ts";
 
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
@@ -39,6 +40,9 @@ export class Game extends Scene {
         this.player = new Player(this);
         this.bullets = this.add.group({classType: Bullet, runChildUpdate: true});
         this.enemies = this.add.group({classType: Enemy, runChildUpdate: true});
+
+        // Démarrer la scène HUD
+        this.scene.launch('Hud');
     }
 
     update(time: number, delta: number) {
@@ -74,9 +78,13 @@ export class Game extends Scene {
             if (bullet instanceof Bullet) {
                 for (const enemy of this.enemies.children.entries) {
                     if (enemy instanceof Enemy
+                        && !enemy.isDead
                         && Phaser.Geom.Intersects.RectangleToRectangle(bullet.insideBody, enemy.insideBody)
                     ) {
-                        enemy.takeDamage(5);
+                        if(enemy.takeDamage(2)) {
+                            const hudScene = this.scene.get('Hud') as Hud;
+                            hudScene.updateScore(enemy.healthMax);
+                        }
                         bullet.destroy();
                     }
                 }

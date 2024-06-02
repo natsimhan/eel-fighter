@@ -6,6 +6,7 @@ export class Enemy extends ImageWithBody {
     velocityY: number;
     limitTop: number;
     limitBottom: number;
+    healthMax: number;
     health: number;
     frameCount: number = 0;
     isDamaged: boolean = false;
@@ -32,12 +33,14 @@ export class Enemy extends ImageWithBody {
         this.limitBottom = y + velocityAmplitudeY;
 
         // La vie dépendra de la taille, plus c'est gros plus ce sera dur à tuer.
-        this.health = 10 * scale;
+        this.healthMax = Math.ceil(scale * 2);
+        this.health = this.healthMax;
     }
 
-    takeDamage(damage: number): void {
+    // Retourne true si on vient de tuer l'ennemi
+    takeDamage(damage: number): boolean {
         if (this.isDead) {
-            return;
+            return false;
         }
         this.health -= damage;
         this.setTintFill(0xffffff);
@@ -52,7 +55,9 @@ export class Enemy extends ImageWithBody {
                 alpha: 0,
                 duration: 3000,
             })
+            return true;
         }
+        return false;
     }
 
     update(time: number, delta: number): void {

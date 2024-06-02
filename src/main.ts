@@ -1,14 +1,15 @@
 import {Boot} from './scenes/Boot';
-import {Game as MainGame} from './scenes/Game';
 import {GameOver} from './scenes/GameOver';
+import {Game} from './scenes/Game';
+import {Hud} from "./scenes/Hud.ts";
 import {MainMenu} from './scenes/MainMenu';
 import {Preloader} from './scenes/Preloader';
 
-import {Game, Types} from "phaser";
+import Phaser from 'phaser';
 
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
-const config: Types.Core.GameConfig = {
+const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.WEBGL,
     width: 1024,
     height: 1024 / 16 * 9,
@@ -22,9 +23,10 @@ const config: Types.Core.GameConfig = {
         Boot,
         Preloader,
         MainMenu,
-        MainGame,
+        Game,
+        Hud,
         GameOver
     ]
 };
 
-export default new Game(config);
+export default new Phaser.Game(config);
