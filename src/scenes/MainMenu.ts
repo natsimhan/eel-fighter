@@ -37,7 +37,7 @@ export class MainMenu extends Scene {
             this.start.getBounds().left - 20,
             this.start.getBounds().centerY,
             'fishPack',
-            'fishTile_103'
+            'fishTile_fish_player'
         );
         this.fish.setOrigin(1, .5);
 

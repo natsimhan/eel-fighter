@@ -7,6 +7,8 @@ export class Enemy extends ImageWithBody {
     limitTop: number;
     limitBottom: number;
     health: number;
+    frameCount: number = 0;
+    isDamaged: boolean = false;
 
     constructor(scene: Phaser.Scene, x: number, y: number, frame: string | number) {
         super(scene, x, y, frame);
@@ -34,12 +36,26 @@ export class Enemy extends ImageWithBody {
 
     takeDamage(damage: number): void {
         this.health -= damage;
+        this.setTintFill(0xffffff);
+        this.isDamaged = true;
+        this.frameCount = 0;
         if (this.health <= 0) {
             this.destroy();
         }
     }
 
     update(time: number, delta: number): void {
+        if (this.isDamaged) {
+            this.frameCount++;
+            if (this.frameCount === 1) {
+                this.clearTint();
+                this.setTintFill(0x808080); // j'applique le tint en gris à la frame suivante
+            } else if (this.frameCount === 2) {
+                this.clearTint(); // Je supprime le tint à la 3e frame
+                this.isDamaged = false; // Réinitialiser l'état de dommage
+            }
+        }
+
         this.x += this.velocityX * delta / 1000;
         if (this.x < -this.getBounds().width) {
             this.destroy();
