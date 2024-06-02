@@ -23,7 +23,7 @@ export class Game extends Scene {
             'fishTile_101',
         ];
         // Intervalle initial de 2 secondes
-        this.spawnInterval = 200;
+        this.spawnInterval = 2 * 100;
         this.timeSinceLastSpawn = 0;
     }
 
@@ -97,10 +97,18 @@ export class Game extends Scene {
             this.spawnEnemy();
             this.timeSinceLastSpawn = 0;
         }
+
+        // Mettre à jour les ennemis existants
+        for (const child of this.children.list) {
+            if (child instanceof Enemy) {
+                child.update(delta);
+            }
+        }
     }
 
     private spawnEnemy() {
-        const x = this.scale.width / 2;
+        // Positionner l'ennemi en dehors de l'écran à droite
+        const x = this.scale.width + 1;
         // Positionner l'ennemi de façon aléatoire en Y
         const y = Phaser.Math.Between(50, this.scale.height - 50);
         const texture = this.enemyTextures[Phaser.Math.Between(0, this.enemyTextures.length - 1)];
