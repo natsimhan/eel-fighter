@@ -12,7 +12,10 @@ export class Enemy extends Phaser.GameObjects.Image {
         this.setFlipX(true);
         const scaleMax = 3;
         const scale = Phaser.Math.FloatBetween(0.5, scaleMax);
-        this.setScale(scale);
+        // Je divise par 2 car j'ai utilisé au final des assets de 128x128
+        // au lieu de 64x64 comme dans l'article. Je ne le fais pas avant pour
+        // conserver les ratios de calculs de vélocité.
+        this.setScale(scale / 2);
         this.setOrigin(0, .5);
 
         this.velocityX = -50 - 150 * (scaleMax - scale);

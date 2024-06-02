@@ -14,12 +14,12 @@ export class Game extends Scene {
         super('Game');
         // Liste des textures des ennemis
         this.enemyTextures = [
-            'fishTile_073',
-            'fishTile_075',
-            'fishTile_077',
-            'fishTile_079',
-            'fishTile_081',
-            'fishTile_101',
+            'fishTile_fish_XS',
+            'fishTile_fish_S',
+            'fishTile_fish_M',
+            'fishTile_fish_L',
+            'fishTile_fish_XL',
+            'fishTile_fish_XXL',
         ];
         // Intervalle initial de 2 secondes
         this.spawnInterval = 2 * 100;

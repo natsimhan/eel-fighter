@@ -9,8 +9,12 @@ export class Player extends Phaser.GameObjects.Image {
             scene.scale.width / 6,
             scene.scale.height / 2,
             'fishPack',
-            'fishTile_103');
+            'fishTile_fish_player');
         scene.add.existing(this);
+
+        // Je divise par 2 car j'ai utilisé au final des assets de 128x128
+        // au lieu de 64x64 comme dans l'article.
+        this.setScale(.5);
 
         const playerBounds = this.getBounds();
         this.playerLimit = new Phaser.Geom.Rectangle(
