@@ -1,15 +1,30 @@
 import {Scene} from 'phaser';
+import {Enemy} from "../components/Enemy.ts";
 
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
-    fishPaddle: Phaser.GameObjects.Image;
+    player: Phaser.GameObjects.Image;
     cursors: Phaser.Types.Input.Keyboard.CursorKeys;
-    paddleLimit: Phaser.Geom.Rectangle;
+    playerLimit: Phaser.Geom.Rectangle;
+    enemyTextures: string[];
+    spawnInterval: number;
+    timeSinceLastSpawn: number;
 
     constructor() {
         super('Game');
-
+        // Liste des textures des ennemis
+        this.enemyTextures = [
+            'fishTile_073',
+            'fishTile_075',
+            'fishTile_077',
+            'fishTile_079',
+            'fishTile_081',
+            'fishTile_101',
+        ];
+        // Intervalle initial de 2 secondes
+        this.spawnInterval = 200;
+        this.timeSinceLastSpawn = 0;
     }
 
     create() {
@@ -19,55 +34,76 @@ export class Game extends Scene {
         this.background = this.add.image(this.scale.width / 2, this.scale.height / 2, 'background');
         this.background.setAlpha(0.2);
 
-        this.createFishPaddle();
+        this.createPlayer();
         if (this.input.keyboard) {
             this.cursors = this.input.keyboard.createCursorKeys();
         }
     }
 
-    update() {
-        const paddleVelocity = 5;
-
-        if (this.cursors.left.isDown) {
-            this.fishPaddle.setX(this.fishPaddle.x - paddleVelocity);
-        } else if (this.cursors.right.isDown) {
-            this.fishPaddle.setX(this.fishPaddle.x + paddleVelocity);
-        }
-
-        if (this.cursors.up.isDown) {
-            this.fishPaddle.setY(this.fishPaddle.y - paddleVelocity);
-        } else if (this.cursors.down.isDown) {
-            this.fishPaddle.setY(this.fishPaddle.y + paddleVelocity);
-        }
-
-        if (this.fishPaddle.y < this.paddleLimit.top) {
-            this.fishPaddle.y = this.paddleLimit.top;
-        } else if (this.fishPaddle.y > this.paddleLimit.bottom) {
-            this.fishPaddle.y = this.paddleLimit.bottom;
-        }
-
-        if (this.fishPaddle.x < this.paddleLimit.left) {
-            this.fishPaddle.x = this.paddleLimit.left;
-        } else if (this.fishPaddle.x > this.paddleLimit.right) {
-            this.fishPaddle.x = this.paddleLimit.right;
-        }
-
+    update(time: number, delta: number) {
+        this.updatePlayer();
+        this.updateEnemies(delta);
     }
 
-    private createFishPaddle() {
-        this.fishPaddle = this.add.sprite(
+    private createPlayer() {
+        this.player = this.add.image(
             this.scale.width / 6,
             this.scale.height / 2,
             'fishPack',
             'fishTile_103'
         );
 
-        const fishPaddleBounds = this.fishPaddle.getBounds();
-        this.paddleLimit = new Phaser.Geom.Rectangle(
-            fishPaddleBounds.width,
-            fishPaddleBounds.height - fishPaddleBounds.height / 2,
-            this.scale.width - 2 * fishPaddleBounds.width,
-            this.scale.height - fishPaddleBounds.height,
+        const playerBounds = this.player.getBounds();
+        this.playerLimit = new Phaser.Geom.Rectangle(
+            playerBounds.width,
+            playerBounds.height - playerBounds.height / 2,
+            this.scale.width - 2 * playerBounds.width,
+            this.scale.height - playerBounds.height,
         );
+    }
+
+    private updatePlayer() {
+        const playerVelocity = 5;
+
+        if (this.cursors.left.isDown) {
+            this.player.setX(this.player.x - playerVelocity);
+        } else if (this.cursors.right.isDown) {
+            this.player.setX(this.player.x + playerVelocity);
+        }
+
+        if (this.cursors.up.isDown) {
+            this.player.setY(this.player.y - playerVelocity);
+        } else if (this.cursors.down.isDown) {
+            this.player.setY(this.player.y + playerVelocity);
+        }
+
+        if (this.player.y < this.playerLimit.top) {
+            this.player.y = this.playerLimit.top;
+        } else if (this.player.y > this.playerLimit.bottom) {
+            this.player.y = this.playerLimit.bottom;
+        }
+
+        if (this.player.x < this.playerLimit.left) {
+            this.player.x = this.playerLimit.left;
+        } else if (this.player.x > this.playerLimit.right) {
+            this.player.x = this.playerLimit.right;
+        }
+    }
+
+    private updateEnemies(delta: number) {
+        this.timeSinceLastSpawn += delta;
+
+        if (this.timeSinceLastSpawn >= this.spawnInterval) {
+            this.spawnEnemy();
+            this.timeSinceLastSpawn = 0;
+        }
+    }
+
+    private spawnEnemy() {
+        const x = this.scale.width / 2;
+        // Positionner l'ennemi de façon aléatoire en Y
+        const y = Phaser.Math.Between(50, this.scale.height - 50);
+        const texture = this.enemyTextures[Phaser.Math.Between(0, this.enemyTextures.length - 1)];
+        new Enemy(this, x, y, texture);
     }
 }
