@@ -9,6 +9,7 @@ export class Enemy extends ImageWithBody {
     health: number;
     frameCount: number = 0;
     isDamaged: boolean = false;
+    isDead: boolean = false;
 
     constructor(scene: Phaser.Scene, x: number, y: number, frame: string | number) {
         super(scene, x, y, frame);
@@ -35,12 +36,22 @@ export class Enemy extends ImageWithBody {
     }
 
     takeDamage(damage: number): void {
+        if (this.isDead) {
+            return;
+        }
         this.health -= damage;
         this.setTintFill(0xffffff);
         this.isDamaged = true;
         this.frameCount = 0;
         if (this.health <= 0) {
-            this.destroy();
+            this.isDead = true;
+            this.velocityY = 50;
+            this.setFrame(this.frame.name + "_bones");
+            this.scene.tweens.add({
+                targets: this,
+                alpha: 0,
+                duration: 3000,
+            })
         }
     }
 
@@ -56,19 +67,29 @@ export class Enemy extends ImageWithBody {
             }
         }
 
+        if (this.isDead) {
+            this.velocityX *= .99;
+            this.velocityY *= .9999;
+        }
+
         this.x += this.velocityX * delta / 1000;
-        if (this.x < -this.getBounds().width) {
+        this.y += this.velocityY * delta / 1000;
+
+        // Si l'ennemie sort de l'écran, on le supprime
+        if (this.x < -this.getBounds().width || this.y > this.scene.scale.height + this.getBounds().height) {
             this.destroy();
             return;
         }
 
-        this.y += this.velocityY * delta / 1000;
-        if (this.y < this.limitTop) {
-            this.y = this.limitTop;
-            this.velocityY = -this.velocityY;
-        } else if (this.y > this.limitBottom) {
-            this.y = this.limitBottom;
-            this.velocityY = -this.velocityY;
+        // Oscillation verticale, seulement s'il n'est pas mort !
+        if (!this.isDead) {
+            if (this.y < this.limitTop) {
+                this.y = this.limitTop;
+                this.velocityY = -this.velocityY;
+            } else if (this.y > this.limitBottom) {
+                this.y = this.limitBottom;
+                this.velocityY = -this.velocityY;
+            }
         }
 
         this.updateInsideBodySize();
