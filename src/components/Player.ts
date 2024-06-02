@@ -7,6 +7,10 @@ export class Player extends Phaser.GameObjects.Image {
     cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     spaceKey: Phaser.Input.Keyboard.Key;
     lastFired: number;
+    health: number = 100;
+    frameCount: number = 0;
+    isDamaged: boolean = false;
+    isDead: boolean = false;
 
     constructor(scene: Phaser.Scene) {
         super(scene,
@@ -37,6 +41,17 @@ export class Player extends Phaser.GameObjects.Image {
     }
 
     update(time: number, delta: number): void {
+        if (this.isDamaged) {
+            this.frameCount++;
+            if (this.frameCount === 1) {
+                this.clearTint();
+                this.setTintFill(0x808080); // j'applique le tint en gris à la frame suivante
+            } else if (this.frameCount === 2) {
+                this.clearTint(); // Je supprime le tint à la 3e frame
+                this.isDamaged = false; // Réinitialiser l'état de dommage
+            }
+        }
+
         const playerVelocity = 5;
 
         if (this.cursors.left.isDown) {
@@ -64,12 +79,28 @@ export class Player extends Phaser.GameObjects.Image {
         }
 
         if (this.spaceKey.isDown && time > this.lastFired) {
-            const bulletVelocityX = 300;
+            const bulletVelocityX = 500;
             const bullet = new Bullet(this.scene, this.getBounds().right, this.y, bulletVelocityX);
             if (this.scene instanceof Game) {
                 this.scene.playerShoot(bullet);
             }
             this.lastFired = time + 100;
         }
+    }
+
+    // Retourne true si on vient de tuer le player
+    takeDamage(damage: number): boolean {
+        if (this.isDead) {
+            return false;
+        }
+        this.health -= damage;
+        this.setTintFill(0xffffff);
+        this.isDamaged = true;
+        this.frameCount = 0;
+        if (this.health <= 0) {
+            this.isDead = true;
+            return true;
+        }
+        return false;
     }
 }

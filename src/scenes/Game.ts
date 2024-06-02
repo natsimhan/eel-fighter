@@ -42,7 +42,9 @@ export class Game extends Scene {
         this.enemies = this.add.group({classType: Enemy, runChildUpdate: true});
 
         // Démarrer la scène HUD
-        this.scene.launch('Hud');
+        this.scene.launch('Hud', {
+            playerLife: this.player.health
+        });
     }
 
     update(time: number, delta: number) {
@@ -74,19 +76,29 @@ export class Game extends Scene {
     }
 
     private checkCollisions() {
-        for (const bullet of this.bullets.children.entries) {
-            if (bullet instanceof Bullet) {
-                for (const enemy of this.enemies.children.entries) {
-                    if (enemy instanceof Enemy
-                        && !enemy.isDead
+        for (const enemy of this.enemies.children.entries) {
+            if (enemy instanceof Enemy && !enemy.isDead) {
+                for (const bullet of this.bullets.children.entries) {
+                    if (bullet instanceof Bullet
                         && Phaser.Geom.Intersects.RectangleToRectangle(bullet.insideBody, enemy.insideBody)
                     ) {
-                        if(enemy.takeDamage(2)) {
+                        if (enemy.takeDamage(2)) {
                             const hudScene = this.scene.get('Hud') as Hud;
                             hudScene.updateScore(enemy.healthMax);
                         }
                         bullet.destroy();
                     }
+                }
+                if (
+                    Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemy.insideBody)
+                    && !enemy.isDamagedPlayer
+                ) {
+                    enemy.isDamagedPlayer = true;
+                    if(this.player.takeDamage(enemy.healthMax)) {
+                        this.scene.start('GameOver');
+                    }
+                    const hudScene = this.scene.get('Hud') as Hud;
+                    hudScene.updateLife(this.player.health);
                 }
             }
         }

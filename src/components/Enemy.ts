@@ -11,6 +11,7 @@ export class Enemy extends ImageWithBody {
     frameCount: number = 0;
     isDamaged: boolean = false;
     isDead: boolean = false;
+    isDamagedPlayer: boolean = false;
 
     constructor(scene: Phaser.Scene, x: number, y: number, frame: string | number) {
         super(scene, x, y, frame);
