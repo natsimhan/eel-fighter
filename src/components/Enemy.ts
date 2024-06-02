@@ -28,7 +28,7 @@ export class Enemy extends Phaser.GameObjects.Image {
         this.limitBottom = y + velocityAmplitudeY;
     }
 
-    update(delta: number): void {
+    update(time: number, delta: number): void {
         this.x += this.velocityX * delta / 1000;
         if (this.x < -this.getBounds().width) {
             this.destroy();

@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
+import {Bullet} from './Bullet';
 
 export class Player extends Phaser.GameObjects.Image {
     playerLimit: Phaser.Geom.Rectangle;
     cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+    spaceKey: Phaser.Input.Keyboard.Key;
+    lastFired: number;
 
     constructor(scene: Phaser.Scene) {
         super(scene,
@@ -26,10 +29,13 @@ export class Player extends Phaser.GameObjects.Image {
 
         if (scene.input.keyboard) {
             this.cursors = scene.input.keyboard.createCursorKeys();
+            this.spaceKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         }
+
+        this.lastFired = 0;
     }
 
-    update() {
+    update(time: number, delta: number): void {
         const playerVelocity = 5;
 
         if (this.cursors.left.isDown) {
@@ -54,6 +60,12 @@ export class Player extends Phaser.GameObjects.Image {
             this.x = this.playerLimit.left;
         } else if (this.x > this.playerLimit.right) {
             this.x = this.playerLimit.right;
+        }
+
+        if (this.spaceKey.isDown && time > this.lastFired) {
+            const bulletVelocityX = 300;
+            new Bullet(this.scene, this.getBounds().right, this.y, bulletVelocityX);
+            this.lastFired = time + 100;
         }
     }
 }

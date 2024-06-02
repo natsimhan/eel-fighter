@@ -1,11 +1,12 @@
 import {Scene} from 'phaser';
 import {Enemy} from "../components/Enemy.ts";
 import {Player} from "../components/Player.ts";
+import {Bullet} from "../components/Bullet.ts";
 
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
-    player: Phaser.GameObjects.Image;
+    player: Player;
     enemyTextures: string[];
     spawnInterval: number;
     timeSinceLastSpawn: number;
@@ -37,27 +38,20 @@ export class Game extends Scene {
     }
 
     update(time: number, delta: number) {
-        this.updatePlayer();
-        this.updateEnemies(delta);
+        this.spawnEnemies(time, delta);
+
+        for (const child of this.children.list) {
+            if (child instanceof Player || child instanceof Enemy || child instanceof Bullet) {
+                child.update(time, delta);
+            }
+        }
     }
 
-    private updatePlayer() {
-        this.player.update();
-    }
-
-    private updateEnemies(delta: number) {
-        // Spawn des ennemies
+    private spawnEnemies(time: number, delta: number) {
         this.timeSinceLastSpawn += delta;
         if (this.timeSinceLastSpawn >= this.spawnInterval) {
             this.spawnEnemy();
             this.timeSinceLastSpawn = 0;
-        }
-
-        // Mettre à jour les ennemis existants
-        for (const child of this.children.list) {
-            if (child instanceof Enemy) {
-                child.update(delta);
-            }
         }
     }
 
