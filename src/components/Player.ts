@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import {Bullet} from './Bullet';
+import {Game} from "../scenes/Game.ts";
 
 export class Player extends Phaser.GameObjects.Image {
     playerLimit: Phaser.Geom.Rectangle;
@@ -64,7 +65,10 @@ export class Player extends Phaser.GameObjects.Image {
 
         if (this.spaceKey.isDown && time > this.lastFired) {
             const bulletVelocityX = 300;
-            new Bullet(this.scene, this.getBounds().right, this.y, bulletVelocityX);
+            const bullet = new Bullet(this.scene, this.getBounds().right, this.y, bulletVelocityX);
+            if (this.scene instanceof Game) {
+                this.scene.playerShoot(bullet);
+            }
             this.lastFired = time + 100;
         }
     }

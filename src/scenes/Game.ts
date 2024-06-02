@@ -10,6 +10,8 @@ export class Game extends Scene {
     enemyTextures: string[];
     spawnInterval: number;
     timeSinceLastSpawn: number;
+    bullets: Phaser.GameObjects.Group;
+    enemies: Phaser.GameObjects.Group;
 
     constructor() {
         super('Game');
@@ -23,7 +25,7 @@ export class Game extends Scene {
             'fishTile_fish_XXL',
         ];
         // Intervalle initial de 2 secondes
-        this.spawnInterval = 2 * 100;
+        this.spawnInterval = 2 * 1000;
         this.timeSinceLastSpawn = 0;
     }
 
@@ -35,16 +37,18 @@ export class Game extends Scene {
         this.background.setAlpha(0.2);
 
         this.player = new Player(this);
+        this.bullets = this.add.group({classType: Bullet, runChildUpdate: true});
+        this.enemies = this.add.group({classType: Enemy, runChildUpdate: true});
     }
 
     update(time: number, delta: number) {
+        this.checkCollisions();
         this.spawnEnemies(time, delta);
+        this.player.update(time, delta);
+    }
 
-        for (const child of this.children.list) {
-            if (child instanceof Player || child instanceof Enemy || child instanceof Bullet) {
-                child.update(time, delta);
-            }
-        }
+    playerShoot(bullet: Bullet) {
+        this.bullets.add(bullet);
     }
 
     private spawnEnemies(time: number, delta: number) {
@@ -61,6 +65,23 @@ export class Game extends Scene {
         // Positionner l'ennemi de façon aléatoire en Y
         const y = Phaser.Math.Between(50, this.scale.height - 50);
         const texture = this.enemyTextures[Phaser.Math.Between(0, this.enemyTextures.length - 1)];
-        new Enemy(this, x, y, texture);
+        const enemy = new Enemy(this, x, y, texture);
+        this.enemies.add(enemy);
     }
+
+    private checkCollisions() {
+        for (const bullet of this.bullets.children.entries) {
+            if (bullet instanceof Bullet) {
+                for (const enemy of this.enemies.children.entries) {
+                    if (enemy instanceof Enemy
+                        && Phaser.Geom.Intersects.RectangleToRectangle(bullet.insideBody, enemy.insideBody)
+                    ) {
+                        enemy.takeDamage(5);
+                        bullet.destroy();
+                    }
+                }
+            }
+        }
+    }
+
 }

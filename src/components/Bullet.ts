@@ -1,11 +1,12 @@
 import Phaser from 'phaser';
+import {ImageWithBody} from "./ImageWithBody.ts";
 
-export class Bullet extends Phaser.GameObjects.Image {
+export class Bullet extends ImageWithBody {
     velocityX: number;
     limitDestroy: Phaser.Geom.Rectangle;
 
     constructor(scene: Phaser.Scene, x: number, y: number, velocityX: number) {
-        super(scene, x, y, 'fishPack', 'fishTile_bubble_0');
+        super(scene, x, y, 'fishTile_bubble_0');
         scene.add.existing(this);
         this.setScale(.5);
         this.velocityX = velocityX;
@@ -21,6 +22,7 @@ export class Bullet extends Phaser.GameObjects.Image {
 
     update(time: number, delta: number): void {
         this.x += this.velocityX * delta / 1000;
+        this.updateInsideBodySize();
 
         if (!Phaser.Geom.Rectangle.Contains(this.limitDestroy, this.x, this.y)) {
             this.destroy();
