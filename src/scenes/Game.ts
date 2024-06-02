@@ -53,11 +53,19 @@ export class Game extends Scene {
         this.player.update(time, delta);
     }
 
-    playerShoot(bullet: Bullet) {
+    playerShoot(bullet: Bullet): void {
         this.bullets.add(bullet);
     }
 
-    private spawnEnemies(time: number, delta: number) {
+    cameraShake(intensityX: number, intensityY: number, duration: number): void {
+        this.cameras.main.shake(
+            duration,
+            new Phaser.Math.Vector2(intensityX, intensityY),
+            true,
+        );
+    }
+
+    private spawnEnemies(time: number, delta: number): void {
         this.timeSinceLastSpawn += delta;
         if (this.timeSinceLastSpawn >= this.spawnInterval) {
             this.spawnEnemy();
@@ -65,7 +73,7 @@ export class Game extends Scene {
         }
     }
 
-    private spawnEnemy() {
+    private spawnEnemy(): void {
         // Positionner l'ennemi en dehors de l'écran à droite
         const x = this.scale.width + 1;
         // Positionner l'ennemi de façon aléatoire en Y
@@ -75,7 +83,7 @@ export class Game extends Scene {
         this.enemies.add(enemy);
     }
 
-    private checkCollisions() {
+    private checkCollisions(): void {
         for (const enemy of this.enemies.children.entries) {
             if (enemy instanceof Enemy && !enemy.isDead) {
                 for (const bullet of this.bullets.children.entries) {
@@ -94,7 +102,7 @@ export class Game extends Scene {
                     && !enemy.isDamagedPlayer
                 ) {
                     enemy.isDamagedPlayer = true;
-                    if(this.player.takeDamage(enemy.healthMax)) {
+                    if (this.player.takeDamage(enemy.healthMax)) {
                         const hudScene = this.scene.get('Hud') as Hud;
                         this.scene.start('GameOver', {
                             score: hudScene.score
@@ -102,9 +110,9 @@ export class Game extends Scene {
                     }
                     const hudScene = this.scene.get('Hud') as Hud;
                     hudScene.updateLife(this.player.health);
+                    this.cameraShake(0.02, 0.02, 200);
                 }
             }
         }
     }
-
 }
