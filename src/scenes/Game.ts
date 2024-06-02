@@ -26,7 +26,7 @@ export class Game extends Scene {
             'fishTile_fish_XXL',
         ];
         // Intervalle initial de 2 secondes
-        this.spawnInterval = 2 * 1000;
+        this.spawnInterval = 2 * 100;
         this.timeSinceLastSpawn = 0;
     }
 
@@ -95,7 +95,10 @@ export class Game extends Scene {
                 ) {
                     enemy.isDamagedPlayer = true;
                     if(this.player.takeDamage(enemy.healthMax)) {
-                        this.scene.start('GameOver');
+                        const hudScene = this.scene.get('Hud') as Hud;
+                        this.scene.start('GameOver', {
+                            score: hudScene.score
+                        });
                     }
                     const hudScene = this.scene.get('Hud') as Hud;
                     hudScene.updateLife(this.player.health);

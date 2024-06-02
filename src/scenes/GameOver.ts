@@ -3,10 +3,16 @@ import {Scene} from 'phaser';
 export class GameOver extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
-    gameover_text: Phaser.GameObjects.Text;
+    gameoverText: Phaser.GameObjects.Text;
+    scoreText: Phaser.GameObjects.Text;
+    score: number;
 
     constructor() {
         super('GameOver');
+    }
+
+    init(data: { score: number }) {
+        this.score = data.score;
     }
 
     create() {
@@ -16,17 +22,23 @@ export class GameOver extends Scene {
         this.background = this.add.image(this.scale.width / 2, this.scale.height / 2, 'background');
         this.background.setAlpha(0.2);
 
-        this.gameover_text = this.add.text(this.scale.width / 2, this.scale.height / 2, 'Game Over', {
+        this.gameoverText = this.add.text(this.scale.width / 2, this.scale.height / 3, 'Game Over', {
             fontFamily: 'Arial Black', fontSize: 64, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
         });
-        this.gameover_text.setOrigin(0.5);
+        this.gameoverText.setOrigin(0.5);
+
+        this.scoreText = this.add.text(this.scale.width / 2, this.scale.height * 2 / 3,
+            "Score : " + this.score, {
+                fontFamily: 'Arial Black', fontSize: 48, color: '#ffffff',
+                stroke: '#000000', strokeThickness: 8,
+                align: 'center'
+            });
+        this.scoreText.setOrigin(0.5);
 
         this.input.once('pointerdown', () => {
-
             this.scene.start('MainMenu');
-
         });
     }
 }
