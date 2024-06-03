@@ -4,15 +4,15 @@
     "version": "0.1.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/phaserjs/template-vite-ts.git"
+        "url": "git+https://github.com/natsimhan/eel-fighter.git"
     },
     "author": "Jonathan BURON <jonathan@ouebsson.fr> (https://studio.ouebsson.fr/)",
     "license": "MIT",
     "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
     "bugs": {
-        "url": "https://github.com/phaserjs/template-vite-ts/issues"
+        "url": "https://github.com/natsimhan/eel-fighter/issues"
     },
-    "homepage": "https://github.com/phaserjs/template-vite-ts#readme",
+    "homepage": "https://github.com/natsimhan/eel-fighter#readme",
     "scripts": {
         "dev": "vite --config vite/config.dev.mjs",
         "build": "vite build --config vite/config.prod.mjs"
