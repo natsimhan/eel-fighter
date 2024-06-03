@@ -13,6 +13,7 @@ export class GameOver extends Scene {
 
     init(data: { score: number }) {
         this.score = data.score;
+        this.playSoundGameOver();
     }
 
     create() {
@@ -45,5 +46,13 @@ export class GameOver extends Scene {
                 this.scene.start('MainMenu');
             });
         }, 2000);
+    }
+
+    private playSoundGameOver(): void {
+        const keySound = 'game-over-arcade';
+        if (!this.sound.get(keySound)) {
+            this.sound.add(keySound);
+        }
+        this.sound.play(keySound, {volume: 1});
     }
 }

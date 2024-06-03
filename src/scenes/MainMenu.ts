@@ -32,9 +32,12 @@ export class MainMenu extends Scene {
         this.start.on('pointerdown', () => {
             this.scene.start('Game');
         });
-        this.input.keyboard?.on('keydown', () => {
-            this.scene.start('Game');
-        });
+        setTimeout(() => {
+            this.input.keyboard?.on('keydown', () => {
+                this.scene.start('Game');
+            });
+        }, 2000);
+
 
         this.fish = this.add.image(
             this.start.getBounds().left - 20,

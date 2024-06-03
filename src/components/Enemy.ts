@@ -49,6 +49,7 @@ export class Enemy extends ImageWithBody {
         this.isDamaged = true;
         this.frameCount = 0;
         if (this.health <= 0) {
+            this.playSoundDeath();
             this.isDead = true;
             this.velocityY = 50;
             this.setFrame(this.frame.name + "_bones");
@@ -103,5 +104,14 @@ export class Enemy extends ImageWithBody {
         }
 
         this.updateInsideBodySize();
+    }
+
+    private playSoundDeath(): void {
+        const keySound = 'bubbles-1';
+        if (!this.scene.sound.get(keySound)) {
+            this.scene.sound.add(keySound);
+        }
+        // Volume à 80%
+        this.scene.sound.play(keySound, {volume: .8});
     }
 }

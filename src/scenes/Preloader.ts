@@ -31,6 +31,10 @@ export class Preloader extends Scene {
         this.load.image('logo', 'logo.png');
 
         this.load.atlas('fishPack', 'kenney_fish_pack.png', 'kenney_fish_pack.json');
+
+        this.load.audio('bubbles-1', 'sounds/bubbles-1.wav');
+        this.load.audio('game-start-arcade', 'sounds/game-start-arcade.wav');
+        this.load.audio('game-over-arcade', 'sounds/game-over-arcade.wav');
     }
 
     create() {

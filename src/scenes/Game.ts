@@ -33,6 +33,7 @@ export class Game extends Scene {
     init() {
         this.timeSinceLastSpawn = 0;
         this.spawnInterval = INITIAL_INTERVAL;
+        this.playSoundStart();
     }
 
     create() {
@@ -123,5 +124,13 @@ export class Game extends Scene {
                 }
             }
         }
+    }
+
+    private playSoundStart(): void {
+        const keySound = 'game-start-arcade';
+        if (!this.sound.get(keySound)) {
+            this.sound.add(keySound);
+        }
+        this.sound.play(keySound, {volume: 1});
     }
 }
