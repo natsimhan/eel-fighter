@@ -8,6 +8,7 @@ export class Bullet extends ImageWithBody {
     constructor(scene: Phaser.Scene, x: number, y: number, velocityX: number) {
         super(scene, x, y, 'fishTile_bubble_0');
         scene.add.existing(this);
+        this.setTintFill(0x7fe5ff);
         this.setScale(.5);
         this.velocityX = velocityX;
 
@@ -21,6 +22,20 @@ export class Bullet extends ImageWithBody {
     }
 
     update(time: number, delta: number): void {
+        // On ajoute une trace de bulle qu'on fait disparaitre
+        // à notre position actuelle avant de la modifier.
+        const trace = this.scene.add.image(this.x, this.y, 'fishPack', 'fishTile_bubble_0');
+        trace.setAlpha(.8);
+        trace.setTintFill(this.tint);
+        trace.setScale(this.scale);
+        this.scene.tweens.add({
+            targets: trace,
+            duration: 100,
+            alpha: 0,
+            scale: .1,
+            onComplete: () => trace.destroy(true),
+        });
+        // Changement de position de la munition :
         this.x += this.velocityX * delta / 1000;
         this.updateInsideBodySize();
 
