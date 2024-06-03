@@ -4,6 +4,9 @@ import {Player} from "../components/Player.ts";
 import {Bullet} from "../components/Bullet.ts";
 import {Hud} from "./Hud.ts";
 
+// Intervalle initial de 2 secondes
+const INITIAL_INTERVAL = 2000;
+
 export class Game extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
@@ -25,8 +28,7 @@ export class Game extends Scene {
             'fishTile_fish_XL',
             'fishTile_fish_XXL',
         ];
-        // Intervalle initial de 2 secondes
-        this.spawnInterval = 2 * 100;
+        this.spawnInterval = INITIAL_INTERVAL;
         this.timeSinceLastSpawn = 0;
     }
 
@@ -65,22 +67,22 @@ export class Game extends Scene {
         );
     }
 
+    spawnEnemy(): void {
+        // Positionner l'ennemi en dehors de l'écran à droite
+        const x = this.scale.width + 1;
+        // Positionner l'ennemi de façon aléatoire en Y
+        const y = Phaser.Math.Between(50, this.scale.height - 50);
+        const texture = this.enemyTextures[Phaser.Math.Between(0, this.enemyTextures.length - 1)];
+        const enemy = new Enemy(this, x, y, texture, this.spawnInterval / INITIAL_INTERVAL);
+        this.enemies.add(enemy);
+    }
+
     private spawnEnemies(time: number, delta: number): void {
         this.timeSinceLastSpawn += delta;
         if (this.timeSinceLastSpawn >= this.spawnInterval) {
             this.spawnEnemy();
             this.timeSinceLastSpawn = 0;
         }
-    }
-
-    private spawnEnemy(): void {
-        // Positionner l'ennemi en dehors de l'écran à droite
-        const x = this.scale.width + 1;
-        // Positionner l'ennemi de façon aléatoire en Y
-        const y = Phaser.Math.Between(50, this.scale.height - 50);
-        const texture = this.enemyTextures[Phaser.Math.Between(0, this.enemyTextures.length - 1)];
-        const enemy = new Enemy(this, x, y, texture);
-        this.enemies.add(enemy);
     }
 
     private checkCollisions(): void {
@@ -93,6 +95,9 @@ export class Game extends Scene {
                         if (enemy.takeDamage(2)) {
                             const hudScene = this.scene.get('Hud') as Hud;
                             hudScene.updateScore(enemy.healthMax);
+                            if (this.spawnInterval > 100) {
+                                this.spawnInterval -= 10;
+                            }
                         }
                         bullet.destroy();
                     }

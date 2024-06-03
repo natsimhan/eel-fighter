@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import {ImageWithBody} from "./ImageWithBody.ts";
+import {Game} from "../scenes/Game.ts";
 
 export class Enemy extends ImageWithBody {
     velocityX: number;
@@ -13,18 +14,18 @@ export class Enemy extends ImageWithBody {
     isDead: boolean = false;
     isDamagedPlayer: boolean = false;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, frame: string | number) {
+    constructor(scene: Phaser.Scene, x: number, y: number, frame: string | number, coefDifficulty: number) {
         super(scene, x, y, frame);
         scene.add.existing(this);
         this.setFlipX(true);
         const scaleMax = 3;
-        const scale = Phaser.Math.FloatBetween(0.5, scaleMax);
+        const scale = Phaser.Math.FloatBetween(0.5, Math.max(1.5, scaleMax * coefDifficulty));
         // Je divise par 2 car j'ai utilisé au final des assets de 128x128
         // au lieu de 64x64 comme dans l'article. Je ne le fais pas avant pour
         // conserver les ratios de calculs de vélocité.
         this.setScale(scale / 2);
         this.setOrigin(0, .5);
-        this.velocityX = -50 - 150 * (scaleMax - scale);
+        this.velocityX = -50 - 150 * (scaleMax - scale) * 1 / coefDifficulty;
         this.velocityY = (Phaser.Math.Between(0, 1) ? 1 : -1) * 100 * (scaleMax - scale);
 
         // Le 50 ici doit être inférieur à la limite haute et basse du spawn,
@@ -81,8 +82,11 @@ export class Enemy extends ImageWithBody {
         this.x += this.velocityX * delta / 1000;
         this.y += this.velocityY * delta / 1000;
 
-        // Si l'ennemie sort de l'écran, on le supprime
+        // Si l'ennemi sort de l'écran, on le supprime
         if (this.x < -this.getBounds().width || this.y > this.scene.scale.height + this.getBounds().height) {
+            if(!this.isDead && this.scene instanceof Game) {
+                this.scene.spawnEnemy();
+            }
             this.destroy();
             return;
         }
