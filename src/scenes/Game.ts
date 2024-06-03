@@ -104,6 +104,7 @@ export class Game extends Scene {
                     enemy.isDamagedPlayer = true;
                     if (this.player.takeDamage(enemy.healthMax)) {
                         const hudScene = this.scene.get('Hud') as Hud;
+                        this.scene.stop('Hud');
                         this.scene.start('GameOver', {
                             score: hudScene.score
                         });

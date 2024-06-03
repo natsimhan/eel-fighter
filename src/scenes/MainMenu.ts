@@ -32,6 +32,9 @@ export class MainMenu extends Scene {
         this.start.on('pointerdown', () => {
             this.scene.start('Game');
         });
+        this.input.keyboard?.on('keydown', () => {
+            this.scene.start('Game');
+        });
 
         this.fish = this.add.image(
             this.start.getBounds().left - 20,
@@ -40,6 +43,7 @@ export class MainMenu extends Scene {
             'fishTile_fish_player'
         );
         this.fish.setOrigin(1, .5);
+        this.fish.setScale(this.start.getBounds().height * .6 / this.fish.getBounds().height);
 
         this.tweens.add({
             targets: this.fish,

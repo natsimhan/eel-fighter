@@ -40,5 +40,10 @@ export class GameOver extends Scene {
         this.input.once('pointerdown', () => {
             this.scene.start('MainMenu');
         });
+        setTimeout(() => {
+            this.input.keyboard?.on('keydown', () => {
+                this.scene.start('MainMenu');
+            });
+        }, 2000);
     }
 }
