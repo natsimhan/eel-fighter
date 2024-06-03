@@ -4,7 +4,7 @@
 			"image": "kenney_fish_pack",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2048,
+				"w": 1024,
 				"h": 512
 			},
 			"scale": 1,
@@ -12,43 +12,64 @@
 				{
 					"filename": "fishTile_fish_M",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 122,
 						"h": 72
 					},
 					"spriteSourceSize": {
-						"x": 1,
+						"x": 0,
 						"y": 0,
-						"w": 121,
+						"w": 122,
 						"h": 72
 					},
 					"frame": {
 						"x": 10,
 						"y": 10,
-						"w": 121,
+						"w": 122,
 						"h": 72
 					}
 				},
 				{
 					"filename": "fishTile_fish_XL",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 120,
 						"h": 96
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 1,
+						"y": 0,
 						"w": 120,
-						"h": 94
+						"h": 96
 					},
 					"frame": {
-						"x": 151,
+						"x": 152,
 						"y": 10,
 						"w": 120,
-						"h": 94
+						"h": 96
+					}
+				},
+				{
+					"filename": "fishTile_fish_player",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 118,
+						"h": 49
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 118,
+						"h": 49
+					},
+					"frame": {
+						"x": 10,
+						"y": 102,
+						"w": 118,
+						"h": 49
 					}
 				},
 				{
@@ -66,52 +87,52 @@
 						"h": 84
 					},
 					"frame": {
-						"x": 10,
-						"y": 102,
+						"x": 292,
+						"y": 10,
 						"w": 116,
 						"h": 84
 					}
 				},
 				{
-					"filename": "fishTile_fish_player",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 116,
-						"h": 49
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 116,
-						"h": 49
-					},
-					"frame": {
-						"x": 291,
-						"y": 10,
-						"w": 116,
-						"h": 49
-					}
-				},
-				{
 					"filename": "fishTile_fish_S",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 116,
 						"h": 66
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 115,
-						"h": 65
+						"x": 0,
+						"y": 0,
+						"w": 116,
+						"h": 66
 					},
 					"frame": {
-						"x": 427,
+						"x": 428,
 						"y": 10,
-						"w": 115,
-						"h": 65
+						"w": 116,
+						"h": 66
+					}
+				},
+				{
+					"filename": "fishTile_fish_XXL",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 111
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 111
+					},
+					"frame": {
+						"x": 564,
+						"y": 10,
+						"w": 114,
+						"h": 111
 					}
 				},
 				{
@@ -129,52 +150,31 @@
 						"h": 97
 					},
 					"frame": {
-						"x": 291,
-						"y": 79,
+						"x": 428,
+						"y": 96,
 						"w": 114,
 						"h": 97
 					}
 				},
 				{
-					"filename": "fishTile_fish_XXL",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 110
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 110
-					},
-					"frame": {
-						"x": 146,
-						"y": 124,
-						"w": 112,
-						"h": 110
-					}
-				},
-				{
 					"filename": "fishTile_fish_XL_bones",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 110,
 						"h": 88
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 109,
-						"h": 86
+						"x": 0,
+						"y": 0,
+						"w": 110,
+						"h": 88
 					},
 					"frame": {
-						"x": 10,
-						"y": 206,
-						"w": 109,
-						"h": 86
+						"x": 292,
+						"y": 114,
+						"w": 110,
+						"h": 88
 					}
 				},
 				{
@@ -192,8 +192,8 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 562,
-						"y": 10,
+						"x": 148,
+						"y": 141,
 						"w": 109,
 						"h": 62
 					}
@@ -201,43 +201,43 @@
 				{
 					"filename": "fishTile_fish_L_bones",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 108,
 						"h": 77
 					},
 					"spriteSourceSize": {
-						"x": 1,
+						"x": 0,
 						"y": 0,
-						"w": 107,
-						"h": 76
+						"w": 108,
+						"h": 77
 					},
 					"frame": {
-						"x": 691,
-						"y": 10,
-						"w": 107,
-						"h": 76
+						"x": 10,
+						"y": 171,
+						"w": 108,
+						"h": 77
 					}
 				},
 				{
 					"filename": "fishTile_fish_S_bones",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 101,
 						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 99,
-						"h": 51
+						"x": 0,
+						"y": 0,
+						"w": 101,
+						"h": 52
 					},
 					"frame": {
-						"x": 562,
-						"y": 92,
-						"w": 99,
-						"h": 51
+						"x": 698,
+						"y": 10,
+						"w": 101,
+						"h": 52
 					}
 				},
 				{
@@ -255,8 +255,8 @@
 						"h": 83
 					},
 					"frame": {
-						"x": 425,
-						"y": 95,
+						"x": 819,
+						"y": 10,
 						"w": 91,
 						"h": 83
 					}
@@ -264,85 +264,43 @@
 				{
 					"filename": "fishTile_fish_XS",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 86,
 						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 84,
-						"h": 53
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 54
 					},
 					"frame": {
-						"x": 425,
-						"y": 198,
-						"w": 84,
-						"h": 53
+						"x": 698,
+						"y": 82,
+						"w": 86,
+						"h": 54
 					}
 				},
 				{
 					"filename": "fishTile_fish_XS_bones",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 79,
 						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 77,
-						"h": 53
-					},
-					"frame": {
-						"x": 278,
-						"y": 196,
-						"w": 77,
-						"h": 53
-					}
-				},
-				{
-					"filename": "fishTile_bubble_0",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 24,
-						"h": 24
-					},
-					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 24,
-						"h": 24
+						"w": 79,
+						"h": 54
 					},
 					"frame": {
-						"x": 375,
-						"y": 196,
-						"w": 24,
-						"h": 24
-					}
-				},
-				{
-					"filename": "fishTile_bubble_1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 24,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 24,
-						"h": 24
-					},
-					"frame": {
-						"x": 375,
-						"y": 240,
-						"w": 24,
-						"h": 24
+						"x": 562,
+						"y": 141,
+						"w": 79,
+						"h": 54
 					}
 				},
 				{
@@ -360,8 +318,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 139,
-						"y": 254,
+						"x": 562,
+						"y": 215,
 						"w": 73,
 						"h": 80
 					}
@@ -381,10 +339,52 @@
 						"h": 81
 					},
 					"frame": {
-						"x": 10,
-						"y": 312,
+						"x": 422,
+						"y": 213,
 						"w": 71,
 						"h": 81
+					}
+				},
+				{
+					"filename": "fishTile_bubble_0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 513,
+						"y": 213,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "fishTile_bubble_1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 513,
+						"y": 257,
+						"w": 24,
+						"h": 24
 					}
 				},
 				{
@@ -402,8 +402,8 @@
 						"h": 79
 					},
 					"frame": {
-						"x": 232,
-						"y": 269,
+						"x": 277,
+						"y": 222,
 						"w": 71,
 						"h": 79
 					}
@@ -423,8 +423,8 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 101,
-						"y": 354,
+						"x": 138,
+						"y": 223,
 						"w": 71,
 						"h": 78
 					}
@@ -445,7 +445,7 @@
 					},
 					"frame": {
 						"x": 10,
-						"y": 413,
+						"y": 268,
 						"w": 69,
 						"h": 80
 					}
@@ -465,8 +465,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 818,
-						"y": 10,
+						"x": 368,
+						"y": 314,
 						"w": 67,
 						"h": 80
 					}
@@ -486,8 +486,8 @@
 						"h": 79
 					},
 					"frame": {
-						"x": 681,
-						"y": 106,
+						"x": 455,
+						"y": 314,
 						"w": 67,
 						"h": 79
 					}
@@ -507,31 +507,10 @@
 						"h": 77
 					},
 					"frame": {
-						"x": 536,
-						"y": 163,
+						"x": 99,
+						"y": 321,
 						"w": 67,
 						"h": 77
-					}
-				},
-				{
-					"filename": "fishTile_letter_point",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 71,
-						"w": 37,
-						"h": 34
-					},
-					"frame": {
-						"x": 623,
-						"y": 163,
-						"w": 37,
-						"h": 34
 					}
 				},
 				{
@@ -549,8 +528,8 @@
 						"h": 63
 					},
 					"frame": {
-						"x": 905,
-						"y": 10,
+						"x": 10,
+						"y": 368,
 						"w": 67,
 						"h": 63
 					}
@@ -570,8 +549,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 992,
-						"y": 10,
+						"x": 186,
+						"y": 321,
 						"w": 66,
 						"h": 80
 					}
@@ -591,8 +570,8 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 905,
-						"y": 93,
+						"x": 97,
+						"y": 418,
 						"w": 59,
 						"h": 78
 					}
@@ -612,8 +591,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 768,
-						"y": 110,
+						"x": 10,
+						"y": 451,
 						"w": 48,
 						"h": 48
 					}
@@ -633,10 +612,31 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 836,
-						"y": 110,
+						"x": 272,
+						"y": 321,
 						"w": 42,
 						"h": 62
+					}
+				},
+				{
+					"filename": "fishTile_letter_point",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 71,
+						"w": 37,
+						"h": 34
+					},
+					"frame": {
+						"x": 272,
+						"y": 403,
+						"w": 37,
+						"h": 34
 					}
 				}
 			]
