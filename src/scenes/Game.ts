@@ -12,8 +12,8 @@ export class Game extends Scene {
     background: Phaser.GameObjects.Image;
     player: Player;
     enemyTextures: string[];
-    spawnInterval: number;
-    timeSinceLastSpawn: number;
+    spawnInterval: number = INITIAL_INTERVAL;
+    timeSinceLastSpawn: number = 0;
     bullets: Phaser.GameObjects.Group;
     enemies: Phaser.GameObjects.Group;
 
@@ -28,8 +28,11 @@ export class Game extends Scene {
             'fishTile_fish_XL',
             'fishTile_fish_XXL',
         ];
-        this.spawnInterval = INITIAL_INTERVAL;
+    }
+
+    init() {
         this.timeSinceLastSpawn = 0;
+        this.spawnInterval = INITIAL_INTERVAL;
     }
 
     create() {

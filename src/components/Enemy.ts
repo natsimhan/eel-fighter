@@ -25,7 +25,7 @@ export class Enemy extends ImageWithBody {
         // conserver les ratios de calculs de vélocité.
         this.setScale(scale / 2);
         this.setOrigin(0, .5);
-        this.velocityX = -50 - 150 * (scaleMax - scale) * 1 / coefDifficulty;
+        this.velocityX = Phaser.Math.Clamp(-50 - 150 * (scaleMax - scale) * 1 / coefDifficulty, -500, -50);
         this.velocityY = (Phaser.Math.Between(0, 1) ? 1 : -1) * 100 * (scaleMax - scale);
 
         // Le 50 ici doit être inférieur à la limite haute et basse du spawn,
@@ -84,7 +84,7 @@ export class Enemy extends ImageWithBody {
 
         // Si l'ennemi sort de l'écran, on le supprime
         if (this.x < -this.getBounds().width || this.y > this.scene.scale.height + this.getBounds().height) {
-            if(!this.isDead && this.scene instanceof Game) {
+            if (!this.isDead && this.scene instanceof Game) {
                 this.scene.spawnEnemy();
             }
             this.destroy();
