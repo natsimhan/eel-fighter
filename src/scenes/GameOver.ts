@@ -42,8 +42,10 @@ export class GameOver extends Scene {
             this.scene.start('MainMenu');
         });
         setTimeout(() => {
-            this.input.keyboard?.on('keydown', () => {
-                this.scene.start('MainMenu');
+            this.input.keyboard?.on('keydown', (event: KeyboardEvent) => {
+                if (event.code === 'Space' || event.code === 'Enter') {
+                    this.scene.start('Game');
+                }
             });
         }, 2000);
     }

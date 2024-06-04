@@ -29,15 +29,25 @@ export class MainMenu extends Scene {
         }).setOrigin(0.5)
             .setInteractive();
 
+        this.add.text(this.scale.width - 10, this.scale.height - 10,
+            'by Natsimhan - (C) 2024 - https://studio.ouebsson.fr', {
+                fontFamily: 'Arial Black',
+                fontSize: 16,
+                color: '#000000',
+                stroke: '#ffffff',
+                strokeThickness: 2,
+            }).setOrigin(1)
+
         this.start.on('pointerdown', () => {
             this.scene.start('Game');
         });
         setTimeout(() => {
-            this.input.keyboard?.on('keydown', () => {
-                this.scene.start('Game');
+            this.input.keyboard?.on('keydown', (event: KeyboardEvent) => {
+                if (event.code === 'Space' || event.code === 'Enter') {
+                    this.scene.start('Game');
+                }
             });
         }, 2000);
-
 
         this.fish = this.add.image(
             this.start.getBounds().left - 20,
