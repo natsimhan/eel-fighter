@@ -1,0 +1,649 @@
+{
+	"textures": [
+		{
+			"image": "kenney_fish_pack",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1024,
+				"h": 512
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fishTile_fish_M",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 122,
+						"h": 72
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 122,
+						"h": 72
+					},
+					"frame": {
+						"x": 10,
+						"y": 10,
+						"w": 122,
+						"h": 72
+					}
+				},
+				{
+					"filename": "fishTile_fish_XL",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 120,
+						"h": 96
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 120,
+						"h": 96
+					},
+					"frame": {
+						"x": 152,
+						"y": 10,
+						"w": 120,
+						"h": 96
+					}
+				},
+				{
+					"filename": "fishTile_fish_player",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 118,
+						"h": 49
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 118,
+						"h": 49
+					},
+					"frame": {
+						"x": 10,
+						"y": 102,
+						"w": 118,
+						"h": 49
+					}
+				},
+				{
+					"filename": "fishTile_fish_L",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 116,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 116,
+						"h": 84
+					},
+					"frame": {
+						"x": 292,
+						"y": 10,
+						"w": 116,
+						"h": 84
+					}
+				},
+				{
+					"filename": "fishTile_fish_S",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 116,
+						"h": 66
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 116,
+						"h": 66
+					},
+					"frame": {
+						"x": 428,
+						"y": 10,
+						"w": 116,
+						"h": 66
+					}
+				},
+				{
+					"filename": "fishTile_fish_XXL",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 111
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 111
+					},
+					"frame": {
+						"x": 564,
+						"y": 10,
+						"w": 114,
+						"h": 111
+					}
+				},
+				{
+					"filename": "fishTile_fish_XXL_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 97
+					},
+					"frame": {
+						"x": 428,
+						"y": 96,
+						"w": 114,
+						"h": 97
+					}
+				},
+				{
+					"filename": "fishTile_fish_XL_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 110,
+						"h": 88
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 110,
+						"h": 88
+					},
+					"frame": {
+						"x": 292,
+						"y": 114,
+						"w": 110,
+						"h": 88
+					}
+				},
+				{
+					"filename": "fishTile_fish_M_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 109,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 109,
+						"h": 62
+					},
+					"frame": {
+						"x": 148,
+						"y": 141,
+						"w": 109,
+						"h": 62
+					}
+				},
+				{
+					"filename": "fishTile_fish_L_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 108,
+						"h": 77
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 108,
+						"h": 77
+					},
+					"frame": {
+						"x": 10,
+						"y": 171,
+						"w": 108,
+						"h": 77
+					}
+				},
+				{
+					"filename": "fishTile_fish_S_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 101,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 101,
+						"h": 52
+					},
+					"frame": {
+						"x": 698,
+						"y": 10,
+						"w": 101,
+						"h": 52
+					}
+				},
+				{
+					"filename": "fishTile_letter_percent",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 23,
+						"w": 91,
+						"h": 83
+					},
+					"frame": {
+						"x": 819,
+						"y": 10,
+						"w": 91,
+						"h": 83
+					}
+				},
+				{
+					"filename": "fishTile_fish_XS",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 86,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 54
+					},
+					"frame": {
+						"x": 698,
+						"y": 82,
+						"w": 86,
+						"h": 54
+					}
+				},
+				{
+					"filename": "fishTile_fish_XS_bones",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 79,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 79,
+						"h": 54
+					},
+					"frame": {
+						"x": 562,
+						"y": 141,
+						"w": 79,
+						"h": 54
+					}
+				},
+				{
+					"filename": "fishTile_letter_0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 26,
+						"w": 73,
+						"h": 80
+					},
+					"frame": {
+						"x": 562,
+						"y": 215,
+						"w": 73,
+						"h": 80
+					}
+				},
+				{
+					"filename": "fishTile_letter_8",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 26,
+						"w": 71,
+						"h": 81
+					},
+					"frame": {
+						"x": 422,
+						"y": 213,
+						"w": 71,
+						"h": 81
+					}
+				},
+				{
+					"filename": "fishTile_bubble_0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 513,
+						"y": 213,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "fishTile_bubble_1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 513,
+						"y": 257,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "fishTile_letter_5",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 28,
+						"y": 27,
+						"w": 71,
+						"h": 79
+					},
+					"frame": {
+						"x": 277,
+						"y": 222,
+						"w": 71,
+						"h": 79
+					}
+				},
+				{
+					"filename": "fishTile_letter_2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 26,
+						"w": 71,
+						"h": 78
+					},
+					"frame": {
+						"x": 138,
+						"y": 223,
+						"w": 71,
+						"h": 78
+					}
+				},
+				{
+					"filename": "fishTile_letter_3",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 26,
+						"w": 69,
+						"h": 80
+					},
+					"frame": {
+						"x": 10,
+						"y": 268,
+						"w": 69,
+						"h": 80
+					}
+				},
+				{
+					"filename": "fishTile_letter_9",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 26,
+						"w": 67,
+						"h": 80
+					},
+					"frame": {
+						"x": 368,
+						"y": 314,
+						"w": 67,
+						"h": 80
+					}
+				},
+				{
+					"filename": "fishTile_letter_7",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 27,
+						"w": 67,
+						"h": 79
+					},
+					"frame": {
+						"x": 455,
+						"y": 314,
+						"w": 67,
+						"h": 79
+					}
+				},
+				{
+					"filename": "fishTile_letter_4",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 27,
+						"w": 67,
+						"h": 77
+					},
+					"frame": {
+						"x": 99,
+						"y": 321,
+						"w": 67,
+						"h": 77
+					}
+				},
+				{
+					"filename": "fishTile_letter_plus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 34,
+						"w": 67,
+						"h": 63
+					},
+					"frame": {
+						"x": 10,
+						"y": 368,
+						"w": 67,
+						"h": 63
+					}
+				},
+				{
+					"filename": "fishTile_letter_6",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 26,
+						"w": 66,
+						"h": 80
+					},
+					"frame": {
+						"x": 186,
+						"y": 321,
+						"w": 66,
+						"h": 80
+					}
+				},
+				{
+					"filename": "fishTile_letter_1",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 26,
+						"w": 59,
+						"h": 78
+					},
+					"frame": {
+						"x": 97,
+						"y": 418,
+						"w": 59,
+						"h": 78
+					}
+				},
+				{
+					"filename": "fishTile_bubble_2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 10,
+						"y": 451,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "fishTile_letter_doubleDot",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 43,
+						"w": 42,
+						"h": 62
+					},
+					"frame": {
+						"x": 272,
+						"y": 321,
+						"w": 42,
+						"h": 62
+					}
+				},
+				{
+					"filename": "fishTile_letter_point",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 71,
+						"w": 37,
+						"h": 34
+					},
+					"frame": {
+						"x": 272,
+						"y": 403,
+						"w": 37,
+						"h": 34
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}
